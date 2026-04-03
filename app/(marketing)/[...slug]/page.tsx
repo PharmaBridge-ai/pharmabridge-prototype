@@ -7,6 +7,5 @@ export default async function MarketingCatchAll({ params }: { params: Promise<{ 
   const key = slug.join("/");
   const page = marketingPages[key];
   if (!page) notFound();
-  return <MarketingPage page={page} />;
+  return <MarketingPage page={page} pageKey={key} />;
 }
-

@@ -1,12 +1,14 @@
 ﻿"use client";
 
+import { use } from "react";
 import Link from "next/link";
 import { SponsorCards, SponsorHeader, SponsorTable } from "@/components/sponsor/workspace";
 import { useSponsorDemo } from "@/lib/state/sponsor-demo";
 
-export default function RfpDetailPage({ params }: { params: { id: string } }) {
+export default function RfpDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { rfps, proposals, distributeRfp, fastForwardProposals, generateComparison } = useSponsorDemo();
-  const rfp = rfps.find((item) => item.id === params.id) ?? rfps[0];
+  const rfp = rfps.find((item) => item.id === id) ?? rfps[0];
   const scopedProposals = proposals.filter((item) => item.rfpId === rfp.id);
 
   return (
@@ -19,5 +21,4 @@ export default function RfpDetailPage({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
 

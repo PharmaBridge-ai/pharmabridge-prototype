@@ -129,7 +129,6 @@ export const marketingPages: Record<string, MarketingPage> = {
   },
 };
 
-
 export const onboardingConfigs: Record<"sponsor" | "cdmo" | "cro", OnboardingConfig> = {
   sponsor: {
     role: "sponsor",
@@ -190,5 +189,3 @@ export function resolveRolePage(role: "sponsor" | "cdmo" | "cro" | "admin", segm
   if (role === "cro") return makeRolePage(role, `CRO route: ${key}`, "CRO-side placeholder preserved for platform completeness.");
   return makeRolePage("admin", `Admin route: ${key}`, "Admin-side placeholder preserved for platform completeness.");
 }
-
-

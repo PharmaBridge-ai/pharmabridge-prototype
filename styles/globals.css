@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
   --font-display: "Bricolage Grotesque", sans-serif;
@@ -21,24 +21,37 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(99, 102, 241, 0.08), transparent 24%),
-    radial-gradient(circle at top right, rgba(45, 212, 191, 0.09), transparent 26%),
-    radial-gradient(circle at bottom left, rgba(251, 191, 36, 0.08), transparent 24%),
-    linear-gradient(180deg, #f7f8fc 0%, #f4f6fb 42%, #eff3f9 100%);
-  color: #142033;
+    radial-gradient(circle at 12% 12%, rgba(59, 130, 246, 0.08), transparent 22%),
+    radial-gradient(circle at 88% 16%, rgba(14, 165, 233, 0.07), transparent 18%),
+    radial-gradient(circle at 24% 84%, rgba(16, 185, 129, 0.06), transparent 18%),
+    linear-gradient(180deg, #f6f8fb 0%, #f1f5f9 46%, #edf2f7 100%);
+  color: #0f172a;
 }
 
 * {
   scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 a,
 button {
-  transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, color 220ms ease, opacity 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    opacity 220ms ease,
+    box-shadow 220ms ease,
+    filter 220ms ease;
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.18);
+  background: rgba(14, 165, 233, 0.18);
   color: #0f172a;
 }
 
