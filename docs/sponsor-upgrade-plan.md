@@ -1,0 +1,231 @@
+# Sponsor Upgrade Plan
+
+## Route Map
+- `/auth/login`: Sponsor sign-in and resume entry
+- `/onboarding/sponsor`: Role-aware onboarding wizard with save-draft behavior
+- `/onboarding/pending`: Verification pending state
+- `/app/sponsor/dashboard`: Command center dashboard
+- `/app/sponsor/programmes`: Programme portfolio with filters and view modes
+- `/app/sponsor/programmes/new`: Programme builder wizard
+- `/app/sponsor/programmes/[id]`: Programme overview, requirements matrix, linked objects
+- `/app/sponsor/programmes/[id]/matching`: AI matching, filters, shortlist, rationale
+- `/app/sponsor/search`: Vendor discovery view linked to matching state
+- `/app/sponsor/vendors/[id]`: Vendor profile, due diligence, documents, risk
+- `/app/sponsor/compare`: Compare tray and shortlist board
+- `/app/sponsor/shortlists`: Saved shortlist library
+- `/app/sponsor/shortlists/[id]`: Shortlist detail and finalist management
+- `/app/sponsor/rfps`: RFP operations index
+- `/app/sponsor/rfps/new`: Structured RFP builder wizard
+- `/app/sponsor/rfps/[id]`: Live RFP status board
+- `/app/sponsor/rfps/[id]/qa`: Clarifications and audit trail
+- `/app/sponsor/rfps/[id]/proposals`: Proposal inbox
+- `/app/sponsor/rfps/[id]/comparison`: AI proposal comparison report
+- `/app/sponsor/rfps/[id]/award`: Award board and project creation success
+- `/app/sponsor/projects`: Execution portfolio
+- `/app/sponsor/projects/[id]`: Project workspace overview
+- `/app/sponsor/projects/[id]/milestones`: Milestone tracker
+- `/app/sponsor/projects/[id]/milestones/[milestoneId]`: Milestone review
+- `/app/sponsor/projects/[id]/documents`: Document vault
+- `/app/sponsor/projects/[id]/issues`: Issues, deviations, disputes
+- `/app/sponsor/projects/[id]/changes`: Change control board
+- `/app/sponsor/projects/[id]/quality`: Quality dashboard
+- `/app/sponsor/projects/[id]/messages`: Project communications
+- `/app/sponsor/intelligence`: Sponsor intelligence command center
+- `/app/sponsor/intelligence/alerts`: Alert stream
+- `/app/sponsor/intelligence/watchlists`: Vendor and modality watchlists
+- `/app/sponsor/intelligence/capacity`: Capacity trends and site pressure
+- `/app/sponsor/billing`: Billing, invoices, escrow summary
+- `/app/sponsor/settings`: Org settings, users, notifications
+
+## State Map
+- Sponsor onboarding:
+  - `not_started`
+  - `in_progress`
+  - `verification_pending`
+  - `approved`
+- Programme lifecycle:
+  - `draft`
+  - `ready_for_matching`
+  - `matching_in_progress`
+  - `shortlist_ready`
+  - `rfp_draft`
+  - `rfp_live`
+  - `evaluating`
+  - `awarded`
+  - `in_execution`
+  - `completed`
+- Vendor relationship:
+  - `discovered`
+  - `watched`
+  - `shortlisted`
+  - `invited`
+  - `finalist`
+  - `awarded`
+  - `flagged`
+- RFP lifecycle:
+  - `draft`
+  - `live`
+  - `clarification_open`
+  - `proposals_incoming`
+  - `comparison_ready`
+  - `award_pending`
+  - `awarded`
+- Proposal lifecycle:
+  - `invited`
+  - `nda_pending`
+  - `in_progress`
+  - `submitted`
+  - `incomplete`
+  - `finalist`
+  - `rejected`
+  - `selected`
+- Project lifecycle:
+  - `pending_funding`
+  - `active`
+  - `at_risk`
+  - `paused`
+  - `disputed`
+  - `completed`
+- Milestone lifecycle:
+  - `pending`
+  - `in_progress`
+  - `awaiting_review`
+  - `approved`
+  - `disputed`
+  - `overdue`
+  - `paid`
+- Alert lifecycle:
+  - `info`
+  - `action_required`
+  - `high_risk`
+  - `critical`
+  - `dismissed`
+  - `watched`
+
+## Screen Inventory
+- Entry and auth
+- Onboarding and verification
+- Dashboard
+- Programme list
+- Programme builder
+- Programme detail
+- AI matching workspace
+- Vendor profile
+- Compare workspace
+- Shortlist library
+- RFP list
+- RFP builder
+- Live RFP board
+- Q&A
+- Proposal inbox
+- AI comparison
+- Award board
+- Projects list
+- Project overview
+- Milestones list and detail
+- Document vault
+- Issues and disputes
+- Change control
+- Quality dashboard
+- Messages
+- Intelligence overview
+- Alerts
+- Watchlists
+- Capacity view
+- Billing
+- Settings
+- Demo control panel
+
+## Reusable Component Inventory
+- Sponsor app shell
+- Route-aware secondary navigation
+- Section headers
+- KPI cards
+- Status chips
+- Empty state blocks
+- Alert cards
+- Activity feed
+- Audit trail panel
+- Action rail
+- Filter rail
+- Segmented tabs
+- Programme summary card
+- Vendor intelligence card
+- AI processing panel
+- Compare tray
+- Shortlist drawer
+- Data table shell
+- Wizard shell and stepper
+- Scorecards
+- Milestone timeline
+- Escrow summary card
+- Document list
+- Timeline / feed rows
+- Confirmation modals / success panels
+
+## Dummy Data Plan
+- Sponsor orgs:
+  - Helixion Biologics
+  - Northstar Rare Therapeutics
+  - Altamira Oncology
+- Programmes:
+  - HER2 ADC Fill-Finish
+  - Rare Disease mRNA Transfer
+  - Autologous CGT Tech Transfer
+  - Radiopharma Scale-Up
+  - PROTAC IND Enabling Supply
+- Vendors:
+  - WuXi XDC
+  - Lonza Ibex
+  - Abzena
+  - Catalent Bloomington
+  - Curia Albuquerque
+  - Samsung Biologics
+- Demo scenarios:
+  - new sponsor
+  - active shortlisting
+  - live RFP
+  - awarded project
+  - at-risk project
+  - intelligence-heavy
+- Supporting data:
+  - technical requirements
+  - work packages
+  - rubric weights
+  - proposal scores
+  - issues and disputes
+  - milestone funding amounts
+  - alerts
+  - docs and audit entries
+
+## Interaction And Animation Plan
+- AI match sequence:
+  - staged labels
+  - animated progress
+  - partial vendor reveal
+  - final confidence summary
+- Proposal comparison generation:
+  - staged section loading
+  - progressive score reveal
+  - recommendation callout
+- Page transitions:
+  - restrained fade/slide on major route changes
+- Wizard transitions:
+  - cross-fade and slide between steps
+- State feedback:
+  - shortlist add/remove
+  - compare tray open/close
+  - milestone approval success
+  - alert arrival pulse
+- Reduced motion support:
+  - static fallbacks for all animated states
+
+## Build Phases
+1. Rebuild data model and local persistent demo store
+2. Upgrade Sponsor shell and shared UI system
+3. Upgrade dashboard and onboarding/programme builder
+4. Upgrade programme detail, matching, vendor profile, compare, shortlist
+5. Upgrade RFP builder, live RFP, proposals, comparison, award
+6. Upgrade project workspace and intelligence views
+7. Upgrade billing, settings, and demo control panel
+8. Add loading, empty, error, success, and motion polish

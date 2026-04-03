@@ -1,0 +1,5 @@
+﻿import Link from "next/link";
+
+export default function OnboardingSubmittedPage() {
+  return <div className="mx-auto max-w-4xl rounded-[34px] border border-white/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.90),rgba(238,244,255,0.82))] p-10 text-center shadow-[0_28px_80px_rgba(148,163,184,0.14)]"><p className="text-[11px] uppercase tracking-[0.28em] text-indigo-600">Submission complete</p><h1 className="mt-4 font-display text-5xl text-slate-900">Your onboarding pack has been submitted.</h1><p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600">This prototype state mirrors the required flow: submitted, under review, and visible to the internal verification console.</p><div className="mt-6 flex justify-center gap-3"><Link href="/onboarding/pending" className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">View pending state</Link><Link href="/app/admin/kyb" className="rounded-full border border-indigo-200 bg-indigo-600 px-4 py-2 text-sm text-white">Open admin queue</Link></div></div>;
+}
