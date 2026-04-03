@@ -1,125 +1,92 @@
 ﻿import Link from "next/link";
 
-const roleCards = [
+const roles = [
   {
     label: "Sponsor",
     href: "/solutions/sponsors",
-    body: "Create programmes, run matching, shortlist vendors, distribute RFPs, compare proposals, and manage awarded delivery.",
+    body: "Create programmes, run matching, distribute RFPs, compare proposals, and manage awarded projects.",
   },
   {
     label: "CRDMO / CDMO",
     href: "/solutions/crdmo",
-    body: "Present capabilities, quality posture, and capacity in a format that supports sponsor evaluation and procurement.",
+    body: "Present capabilities, quality posture, and capacity inside a sponsor-ready sourcing environment.",
   },
   {
     label: "CRO",
     href: "/solutions/cro",
-    body: "Surface therapeutic expertise and service breadth within the same sourcing and intelligence environment.",
+    body: "Surface research expertise and service breadth within the same connected platform.",
   },
 ];
 
-const workflow = [
-  ["Brief", "Create a structured programme."],
-  ["Match", "Run AI ranking and review fit rationale."],
-  ["RFP", "Invite shortlisted vendors under NDA."],
-  ["Award", "Compare proposals and confirm selection."],
-  ["Execute", "Fund escrow and manage milestones."],
-];
+const steps = ["Create brief", "Run AI match", "Launch RFP", "Compare proposals", "Manage execution"];
 
 export default function HomePage() {
   return (
-    <div className="space-y-14">
-      <section className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-        <div className="rounded-[36px] border border-white/75 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(243,247,255,0.82))] p-8 shadow-[0_28px_90px_rgba(148,163,184,0.14)] md:p-12">
+    <div className="space-y-16">
+      <section className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div className="rounded-[34px] border border-white/75 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(244,247,252,0.86))] p-8 shadow-[0_24px_80px_rgba(148,163,184,0.12)] md:p-12">
           <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">Pharmaceutical outsourcing platform</div>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[1.02] text-slate-900 md:text-[76px]">
-            Find and manage the right outsourcing partner without losing workflow control.
+          <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[1.02] text-slate-900 md:text-[72px]">
+            A simpler way to find, award, and manage outsourcing partners.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
-            PharmaBridge connects sponsor onboarding, AI matching, shortlist decisions, RFP orchestration, proposal comparison, award, escrow, and milestone review in one calm enterprise workflow.
+            PharmaBridge connects sponsor onboarding, AI matching, RFP orchestration, proposal review, award, escrow, and milestone control in one clear workflow.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/signup" className="rounded-full border border-indigo-200 bg-indigo-600 px-5 py-3 text-sm text-white shadow-[0_14px_32px_rgba(99,102,241,0.16)]">Get started</Link>
+            <Link href="/signup" className="rounded-full bg-slate-900 px-5 py-3 text-sm text-white">Get started</Link>
             <Link href="/login" className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700">Sign in</Link>
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[
-            ["Verified partners", "2,400+"],
-            ["Average shortlist time", "4.2 days"],
-            ["Tracked signals", "12.4k"],
-            ["Protected value", "$8.3M"],
-          ].map(([label, value]) => (
-            <div key={label} className="rounded-[28px] border border-white/75 bg-white/82 p-5 shadow-[0_18px_50px_rgba(148,163,184,0.12)]">
-              <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">{label}</div>
-              <div className="mt-3 font-display text-4xl text-slate-900">{value}</div>
+        <div className="rounded-[34px] border border-white/75 bg-white/84 p-7 shadow-[0_20px_60px_rgba(148,163,184,0.12)]">
+          <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">At a glance</div>
+          <div className="mt-5 space-y-5">
+            {[
+              ["Verified partners", "2,400+"],
+              ["Average shortlist time", "4.2 days"],
+              ["Tracked signals", "12.4k"],
+            ].map(([label, value]) => (
+              <div key={label} className="border-b border-slate-200 pb-5 last:border-b-0 last:pb-0">
+                <div className="text-sm text-slate-500">{label}</div>
+                <div className="mt-2 font-display text-4xl text-slate-900">{value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-3">
+        {roles.map((role) => (
+          <a key={role.label} href={role.href} className="rounded-[28px] border border-white/75 bg-white/84 p-6 shadow-[0_18px_50px_rgba(148,163,184,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_70px_rgba(148,163,184,0.14)]">
+            <div className="font-display text-3xl text-slate-900">{role.label}</div>
+            <p className="mt-4 text-sm leading-7 text-slate-600">{role.body}</p>
+          </a>
+        ))}
+      </section>
+
+      <section className="rounded-[34px] border border-white/75 bg-white/84 p-8 shadow-[0_20px_60px_rgba(148,163,184,0.12)] md:p-10">
+        <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">Workflow</div>
+        <div className="mt-5 grid gap-3 md:grid-cols-5">
+          {steps.map((step, index) => (
+            <div key={step} className="rounded-[22px] border border-slate-200/80 bg-slate-50/85 px-4 py-5 text-center">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-slate-400">0{index + 1}</div>
+              <div className="mt-3 font-display text-2xl text-slate-900">{step}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-3">
-        {roleCards.map((card) => (
-          <a key={card.label} href={card.href} className="rounded-[30px] border border-white/75 bg-white/82 p-6 shadow-[0_20px_60px_rgba(148,163,184,0.12)] transition hover:-translate-y-0.5 hover:shadow-[0_26px_80px_rgba(148,163,184,0.15)]">
-            <div className="font-display text-3xl text-slate-900">{card.label}</div>
-            <p className="mt-4 text-sm leading-7 text-slate-600">{card.body}</p>
-          </a>
-        ))}
-      </section>
-
-      <section className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-        <div className="rounded-[34px] border border-white/75 bg-white/84 p-7 shadow-[0_22px_70px_rgba(148,163,184,0.12)]">
-          <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">Sponsor workflow</div>
-          <h2 className="mt-3 font-display text-4xl text-slate-900">A clear path from intake to execution.</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600">
-            The product is designed to feel like a real operating environment for sponsor teams, not a collection of disconnected screens.
-          </p>
-          <div className="mt-6 space-y-3">
-            {workflow.map(([title, body], index) => (
-              <div key={title} className="flex items-center gap-4 rounded-[24px] border border-slate-200/80 bg-slate-50/85 px-4 py-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 font-mono text-sm text-white">0{index + 1}</div>
-                <div>
-                  <div className="font-display text-2xl text-slate-900">{title}</div>
-                  <div className="text-sm text-slate-600">{body}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-[34px] border border-white/75 bg-[linear-gradient(145deg,rgba(15,23,42,0.96),rgba(30,41,59,0.94))] p-7 text-white shadow-[0_30px_100px_rgba(15,23,42,0.24)]">
-          <div className="text-[11px] uppercase tracking-[0.22em] text-white/45">Example sponsor motion</div>
-          <h2 className="mt-3 font-display text-4xl">HER2 ADC Fill-Finish</h2>
-          <p className="mt-4 max-w-2xl text-sm leading-8 text-white/70">
-            See how a sponsor programme moves from structured brief into ranked vendor matches, shortlist review, RFP release, proposal comparison, award, and project execution.
-          </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {[
-              ["Top fit", "WuXi XDC", "96 fit score"],
-              ["Best balance", "Lonza Ibex", "EU release confidence"],
-              ["Current action", "Distribute RFP", "NDA-gated release"],
-              ["Live signal", "Capacity watch", "Western Europe tightening"],
-            ].map(([label, value, body]) => (
-              <div key={label} className="rounded-[24px] border border-white/12 bg-white/8 p-4">
-                <div className="text-[11px] uppercase tracking-[0.22em] text-white/40">{label}</div>
-                <div className="mt-3 font-display text-2xl text-white">{value}</div>
-                <div className="mt-2 text-sm text-white/65">{body}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="rounded-[36px] border border-white/75 bg-white/84 p-8 shadow-[0_22px_70px_rgba(148,163,184,0.12)] md:p-10">
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+      <section className="rounded-[34px] border border-white/75 bg-[linear-gradient(135deg,rgba(15,23,42,0.96),rgba(30,41,59,0.94))] p-8 text-white shadow-[0_28px_90px_rgba(15,23,42,0.22)] md:p-10">
+        <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">Start the sponsor flow</div>
-            <h2 className="mt-3 max-w-4xl font-display text-4xl text-slate-900 md:text-5xl">Use signup for onboarding or sign in to go straight into the workspace.</h2>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/45">Start the sponsor flow</div>
+            <h2 className="mt-3 max-w-3xl font-display text-4xl leading-tight md:text-5xl">
+              Use signup for onboarding, or sign in and continue directly in the workspace.
+            </h2>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/signup" className="rounded-full border border-indigo-200 bg-indigo-600 px-5 py-3 text-sm text-white">Get started</Link>
-            <Link href="/login" className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700">Sign in</Link>
+            <Link href="/signup" className="rounded-full bg-white px-5 py-3 text-sm text-slate-900">Get started</Link>
+            <Link href="/login" className="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-white">Sign in</Link>
           </div>
         </div>
       </section>
